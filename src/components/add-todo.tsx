@@ -12,23 +12,23 @@ interface AddTodoInputProps {
 }
 
 const AddTodoInput: FC<AddTodoInputProps> = ({ saveTodo }) => {
-  const todoContentRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (todoContentRef.current) {
-      todoContentRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   }, []);
 
   const doSaveTodo = () => {
-    if (todoContentRef?.current?.value) {
-      saveTodo(todoContentRef.current.value);
+    if (inputRef?.current?.value) {
+      saveTodo(inputRef.current.value);
     }
   };
 
   return (
     <>
-      <input ref={todoContentRef} defaultValue="" placeholder="Add a Todo" />
+      <input ref={inputRef} defaultValue="" placeholder="Add a Todo" />
       <button onClick={doSaveTodo}>Add</button>
     </>
   );
